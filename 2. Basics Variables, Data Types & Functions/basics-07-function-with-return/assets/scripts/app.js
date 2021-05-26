@@ -6,6 +6,8 @@ const multiplyOperator = '*';
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+let allDigitsInOperations = [];
+
 function getUserInput() {
   return parseInt(userInput.value);
 }
@@ -15,7 +17,13 @@ function createCalculationDescription(numberBeforeCalculation, operator) {
 }
 
 function createCalculationResult(operator) {
-  currentResult = eval(`${currentResult} ${operator} ${getUserInput()}`) || 0;
+  let userInput = getUserInput();
+  currentResult = eval(`${currentResult} ${operator} ${userInput}`) || 0;
+
+  allDigitsInOperations.push(userInput);
+
+  console.log(`Number from user input - ${userInput}`)
+  console.log("All numbers that have been manipulated " + allDigitsInOperations);
 
   return currentResult;
 }
